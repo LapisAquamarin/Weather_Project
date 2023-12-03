@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginVertical="5dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvCityName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="start"
+        android:layout_weight="8.5"
+        android:text="City name" />
+
+    <TextView
+        android:id="@+id/tvTempature"
+        android:layout_gravity="end"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_weight="1.5"
+        android:text="Temp" />
+</LinearLayout>
