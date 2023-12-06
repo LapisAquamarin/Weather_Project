@@ -25,16 +25,25 @@ public class SearchLocation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_location);
-        addContols();
+        addControls();
         addEvents();
-        // data test llist view
+        // Test Data on list view
         List<Map<String, String>> listItem= new ArrayList<>();
+
         Map<String, String> mapValue= new HashMap<>();
         mapValue.put("city_name", "Ho Chi Minh");
-        mapValue.put("temp", "24");
+        mapValue.put("temp", "30");
+        mapValue.put("current_condition", "Mostly Cloudy");
+        mapValue.put("highest_temp","32");
+        mapValue.put("lowest_temp","25");
+
         Map<String, String> mapValue2= new HashMap<>();
         mapValue2.put("city_name", "Ha Noi");
-        mapValue2.put("temp", "20");
+        mapValue2.put("temp", "28");
+        mapValue2.put("current_condition", "Stormy");
+        mapValue2.put("highest_temp","33");
+        mapValue2.put("lowest_temp","24");
+
         System.out.println(mapValue);
         listItem.add(mapValue);
         listItem.add(mapValue2);
@@ -43,7 +52,7 @@ public class SearchLocation extends AppCompatActivity {
         lvLocation.setAdapter(adapter);
     }
 
-    void addContols(){
+    void addControls(){
         lvLocation = (ListView) findViewById(R.id.lvLocation);
         btnBack = (ImageButton) findViewById(R.id.btnBack);
     }

@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import com.mobile.weatherproject3.R;
 
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,10 +40,18 @@ public class AdapterSearchLocation extends BaseAdapter {
         LayoutInflater inflater = activity.getLayoutInflater();
         view = inflater.inflate(R.layout.item_layout_location, null);
         TextView tvCityName = (TextView) view.findViewById(R.id.tvCityName);
-        TextView tvTemp = (TextView) view.findViewById(R.id.tvTempature);
+        TextView tvTemp = (TextView) view.findViewById(R.id.tvTemperature);
+
+        TextView tvCurrentCondition = (TextView) view.findViewById(R.id.tvCurrentCondition);
+        TextView tvHighestTemp = (TextView) view.findViewById(R.id.tvHighestTemp);
+        TextView tvLowestTemp = (TextView) view.findViewById(R.id.tvLowestTemp);
 
         tvCityName.setText(items.get(i).get("city_name"));
         tvTemp.setText(items.get(i).get("temp") + "°C");
+
+        tvCurrentCondition.setText(items.get(i).get("current_condition"));
+        tvHighestTemp.setText(items.get(i).get("highest_temp") + "°");
+        tvLowestTemp.setText(items.get(i).get("lowest_temp") + "°");
 
         return view;
     }
