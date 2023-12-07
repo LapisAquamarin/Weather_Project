@@ -1,15 +1,16 @@
 package com.mobile.weatherproject3.Control;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,22 +39,42 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Weather> listWeatherGeneral = new ArrayList<>();
     ArrayList<Weather> listWeatherDetail = new ArrayList<>();
-    private final String url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + "H%E1%BB%93%20Ch%C3%AD%20Minh?unitGroup=metric&key=CFRUQ3SPBAF8YZFZM7NJ5MYWB&contentType=json";
+    String location = "Hồ Chí Minh";
+    private String url = "https://weather.visualcrossing" +
+            ".com/VisualCrossingWebServices/rest/services/timeline/" + location + "?unitGroup=metric" +
+            "&key=CFRUQ3SPBAF8YZFZM7NJ5MYWB&contentType=json";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addControl();
         addEvent();
+
         getDataWeather(url);
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeLocation();
+        url = "https://weather.visualcrossing" +
+                ".com/VisualCrossingWebServices/rest/services/timeline/" + location + "?unitGroup=metric" +
+                "&key=CFRUQ3SPBAF8YZFZM7NJ5MYWB&contentType=json";
+        getDataWeather(url);
+    }
+
     private void addControl() {
         lvMainActivity = (ListView) findViewById(R.id.lvMainActivity);
         rcMainActivity = (RecyclerView) findViewById(R.id.rcMainActivity);
     }
     private void addEvent() {
 
+    }
+
+    public void changeLocation(){
+        Intent intent = getIntent();
+        String getName = intent.getStringExtra("location");
     }
 
     public void getDataWeather(String url)
